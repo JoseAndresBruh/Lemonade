@@ -77,6 +77,7 @@ fun LemonadeApp() {
                     textLabelResourceId = R.string.lemon_squeeze,
                     drawableResourceId = R.drawable.lemon_squeeze,
                     contentDescriptionResourceId = R.string.lemon_squeeze,
+                    extraText = "\n(Restantes: $squeezeCount)",
                     onImageClick = {
                         squeezeCount--
                         if (squeezeCount == 0) {
@@ -115,6 +116,7 @@ fun LemonTextAndImage(
     drawableResourceId: Int,
     contentDescriptionResourceId: Int,
     onImageClick: () -> Unit,
+    extraText: String = "",
     modifier: Modifier = Modifier
 ) {
     val comicSansFamily = FontFamily(Font(R.font.comic))
@@ -146,7 +148,7 @@ fun LemonTextAndImage(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(textLabelResourceId),
+                text = stringResource(textLabelResourceId) + extraText,
                 fontSize = 22.sp,
                 fontFamily = comicSansFamily,
                 fontWeight = FontWeight.Normal,
